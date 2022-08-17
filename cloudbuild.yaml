@@ -1,0 +1,11 @@
+steps:
+  #DOCKER BUILD
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--tag=gcr.io/$PROJECT_ID/spark-java', '.']
+  #DOCKER PUSH
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/spark-java']
+  # DEPLOY TO CLOUD RUN
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['run', 'deploy', 'deploy-service', '--image', 'gcr.io/$PROJECT_ID/spark-java:latest', '--region', 'us-central1', '--allow-unauthenticated']
+
