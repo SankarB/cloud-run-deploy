@@ -1,3 +1,4 @@
+#test auto trigger cloud build
 steps:
   #DOCKER BUILD
   - name: 'gcr.io/cloud-builders/docker'
